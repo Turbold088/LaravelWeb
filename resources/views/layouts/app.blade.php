@@ -52,6 +52,21 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+
+                                    @if (Auth::user()->role_id==1)
+                                    <li>
+                                        <a href="{{ route('AdminPanel') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('admin-form').submit();">
+                                            Admin
+                                        </a>
+
+                                        <form id="admin-form" action="{{ route('AdminPanel') }}" method="GET" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    @endif
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -63,6 +78,10 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    
+                                    
+                                    
+
                                 </ul>
                             </li>
                         @endguest
